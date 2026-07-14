@@ -37,8 +37,8 @@ export default function App() {
 
   const count = cart.reduce((a, b) => a + b.qty, 0);
   const subtotal = cart.reduce((a, b) => a + b.price * b.qty, 0);
-  const shipping = subtotal > 200 || subtotal === 0 ? 0 : 12.99;
-  const tax = +(subtotal * 0.08).toFixed(2);
+  const shipping = subtotal > 50 || subtotal === 0 ? 0 : 4.99;
+  const tax = +(subtotal * 0.20).toFixed(2);
   const total = +(subtotal + shipping + tax).toFixed(2);
 
   const openCheckout = () => { setDrawer(false); setCheckout(true); };
@@ -48,7 +48,7 @@ export default function App() {
     <>
       <header className="nav">
         <div className="wrap nav-inner">
-          <div className="logo"><span className="mark">A</span> ATIKUR</div>
+          <div className="logo"><span className="mark">C</span> ClickFR</div>
           <nav className="nav-links">
             <a href="#shop">Shop</a>
             <a href="#featured">Featured</a>
@@ -56,7 +56,7 @@ export default function App() {
             <a href="#about">About</a>
           </nav>
           <div className="nav-right">
-            <span className="pill" style={{ color: "var(--muted)" }}>🚚 Free shipping over $200</span>
+            <span className="pill" style={{ color: "var(--muted)" }}>🚚 Free shipping over €50</span>
             <button className="cart-btn" onClick={() => setDrawer(true)} title="Cart">
               <Cart />
               {count > 0 && <span className="cart-count">{count}</span>}
@@ -68,9 +68,9 @@ export default function App() {
       <section className="hero">
         <div className="wrap hero-grid">
           <div>
-            <span className="pill"><span style={{ color: "var(--brand-2)" }}>✦</span> New Summer 2026 collection</span>
-            <h1>Premium tech,<br /><span className="g">effortlessly yours.</span></h1>
-            <p>Discover audio, wearables and smart-home gear engineered to feel like the future. Free 2-day shipping, 30-day returns, and a demo checkout you can try right now.</p>
+            <span className="pill"><span style={{ color: "var(--brand-2)" }}>✦</span> New arrivals every week</span>
+            <h1>Everything you need,<br /><span className="g">one click away.</span></h1>
+            <p>Phone accessories, Forever Living wellness, clothing and home essentials — curated and delivered fast. Free shipping over €50, easy returns, and a demo checkout you can try right now.</p>
             <div className="hero-cta">
               <a href="#shop" className="btn btn-primary">Shop the collection →</a>
               <a href="#deals" className="btn btn-ghost">View today's deals</a>
@@ -82,7 +82,7 @@ export default function App() {
             </div>
           </div>
           <div className="hero-visual">
-            <span className="float">🎧</span>
+            <span className="float">🛍️</span>
             <div className="badge b1"><span className="dot"></span> In stock · ships today</div>
             <div className="badge b2">⭐ 4.9 · 12,480 reviews</div>
           </div>
@@ -91,7 +91,7 @@ export default function App() {
 
       <section className="wrap sec" id="about">
         <div className="feat">
-          <div className="f"><span className="ic">🚚</span><div><b>Free fast shipping</b><span>On all orders over $200</span></div></div>
+          <div className="f"><span className="ic">🚚</span><div><b>Free fast shipping</b><span>On all orders over €50</span></div></div>
           <div className="f"><span className="ic">↩️</span><div><b>30-day returns</b><span>No questions asked</span></div></div>
           <div className="f"><span className="ic">🔒</span><div><b>Secure checkout</b><span>Encrypted demo payments</span></div></div>
           <div className="f"><span className="ic">🎁</span><div><b>2-year warranty</b><span>On every product</span></div></div>
@@ -130,10 +130,10 @@ export default function App() {
         <div className="deals-banner">
           <div>
             <span className="eyebrow">Limited time</span>
-            <h2 style={{ fontSize: 28, margin: "8px 0 6px", fontWeight: 800 }}>Up to 30% off audio gear 🎧</h2>
-            <p style={{ color: "var(--muted)", margin: 0, maxWidth: 440 }}>Save on our best-selling headphones, earbuds and speakers. Deals end soon — add to cart and check out with the demo payment.</p>
+            <h2 style={{ fontSize: 28, margin: "8px 0 6px", fontWeight: 800 }}>Up to 30% off phone accessories 📱</h2>
+            <p style={{ color: "var(--muted)", margin: 0, maxWidth: 440 }}>Save on cables, chargers, power banks and cases. Deals end soon — add to cart and check out with the demo payment.</p>
           </div>
-          <button className="btn btn-primary" onClick={() => { setCat("Audio"); document.getElementById("shop").scrollIntoView({ behavior: "smooth" }); }}>Shop audio deals →</button>
+          <button className="btn btn-primary" onClick={() => { setCat("Phone Accessories"); document.getElementById("shop").scrollIntoView({ behavior: "smooth" }); }}>Shop accessory deals →</button>
         </div>
       </section>
 
@@ -141,18 +141,18 @@ export default function App() {
         <div className="wrap">
           <div className="foot-grid">
             <div>
-              <div className="logo" style={{ marginBottom: 12 }}><span className="mark">A</span> ATIKUR</div>
-              <p style={{ fontSize: 13.5, maxWidth: 300, margin: 0 }}>Premium tech &amp; lifestyle products, designed to feel like the future. This is a demo store built for showcase purposes.</p>
+              <div className="logo" style={{ marginBottom: 12 }}><span className="mark">C</span> ClickFR</div>
+              <p style={{ fontSize: 13.5, maxWidth: 300, margin: 0 }}>Phone accessories, wellness, clothing &amp; home essentials — all in one place. This is a demo store built for showcase purposes.</p>
               <div style={{ display: "flex", gap: 10, marginTop: 16, fontSize: 20 }}>
                 <span>📸</span><span>🐦</span><span>▶️</span><span>💼</span>
               </div>
             </div>
-            <div><h4>Shop</h4><ul><li><a href="#shop">All products</a></li><li><a href="#deals">Deals</a></li><li><a href="#shop">Audio</a></li><li><a href="#shop">Wearables</a></li></ul></div>
+            <div><h4>Shop</h4><ul><li><a href="#shop">All products</a></li><li><a href="#deals">Deals</a></li><li><a href="#shop">Phone Accessories</a></li><li><a href="#shop">Clothing</a></li></ul></div>
             <div><h4>Support</h4><ul><li><a href="#">Contact us</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty</a></li></ul></div>
             <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Privacy</a></li></ul></div>
           </div>
           <div className="foot-bottom">
-            <span>© 2026 ATIKUR. All rights reserved · Demo store.</span>
+            <span>© 2026 ClickFR. All rights reserved · Demo store.</span>
             <span style={{ display: "flex", gap: 10, alignItems: "center" }}>We accept: 💳 VISA · Mastercard · 🅿️ PayPal ·  Pay</span>
           </div>
         </div>

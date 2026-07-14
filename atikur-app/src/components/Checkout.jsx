@@ -133,7 +133,7 @@ export default function Checkout({ open, onClose, items, subtotal, shipping, tax
                 <>
                   <div className="card-visual">
                     <div className="cv-top">
-                      <span className="brand">ATIKUR PAY</span>
+                      <span className="brand">CLICKFR PAY</span>
                       <span className="netw">{brand}</span>
                     </div>
                     <div className="chip-ic"></div>
@@ -185,7 +185,7 @@ export default function Checkout({ open, onClose, items, subtotal, shipping, tax
               <div style={{ borderTop: "1px solid var(--line)", margin: "14px 0", paddingTop: 14 }}>
                 <div className="ci"><span>Subtotal</span><b>{money(subtotal)}</b></div>
                 <div className="ci"><span>Shipping</span><b>{shipping === 0 ? "Free" : money(shipping)}</b></div>
-                <div className="ci"><span>Tax</span><b>{money(tax)}</b></div>
+                <div className="ci"><span>VAT (20%)</span><b>{money(tax)}</b></div>
               </div>
               <div className="ci" style={{ fontSize: 20, fontWeight: 800, borderTop: "1px solid var(--line)", paddingTop: 14 }}>
                 <span style={{ color: "var(--txt)" }}>Total</span><b>{money(total)}</b>

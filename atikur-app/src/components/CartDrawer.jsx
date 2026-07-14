@@ -40,7 +40,7 @@ export default function CartDrawer({ open, onClose, items, setQty, remove, subto
           <div className="drawer-foot">
             <div className="row"><span>Subtotal</span><span>{money(subtotal)}</span></div>
             <div className="row"><span>Shipping</span><span>{shipping === 0 ? "Free" : money(shipping)}</span></div>
-            <div className="row"><span>Tax (est.)</span><span>{money(tax)}</span></div>
+            <div className="row"><span>VAT (20%)</span><span>{money(tax)}</span></div>
             <div className="row total"><span>Total</span><span>{money(total)}</span></div>
             <button className="btn btn-primary btn-block" onClick={onCheckout}>
               <Lock /> Checkout · {money(total)}

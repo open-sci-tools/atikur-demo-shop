@@ -9,7 +9,7 @@ export default function ProductCard({ p, onAdd, fav, onFav }) {
         <button className="fav" onClick={() => onFav(p.id)} title="Save">{fav ? "❤️" : "🤍"}</button>
       </div>
       <div className="body">
-        <span className="cat">{p.cat}</span>
+        <span className="cat">{p.sub || p.cat}</span>
         <h3>{p.name}</h3>
         <div className="rate">
           <span className="stars">{"★".repeat(Math.round(p.rating))}</span>

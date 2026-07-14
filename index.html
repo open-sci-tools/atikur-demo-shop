@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ATIKUR — Premium Tech & Lifestyle</title>
-  <meta name="description" content="ATIKUR — a modern demo e-commerce store with a full checkout & demo payment flow." />
+  <title>ClickFR — Phone Accessories, Wellness, Clothing & More</title>
+  <meta name="description" content="ClickFR — a modern demo e-commerce store with a full checkout & demo payment flow." />
 
   <!-- React (CDN, stable) -->
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
@@ -353,21 +353,35 @@
 
     /* ---------------- Data ---------------- */
     const PRODUCTS = [
-      { id:1, name:"Aurora Wireless Headphones", cat:"Audio", emoji:"🎧", price:249, old:329, rating:4.9, reviews:1284, tag:"Bestseller", grad:"linear-gradient(135deg,#7c5cff,#22d3ee)" },
-      { id:2, name:"Pulse Pro Smartwatch", cat:"Wearables", emoji:"⌚", price:329, old:null, rating:4.8, reviews:876, tag:"New", grad:"linear-gradient(135deg,#ff5c8a,#7c5cff)" },
-      { id:3, name:"Nebula Bluetooth Speaker", cat:"Audio", emoji:"🔊", price:129, old:159, rating:4.7, reviews:642, tag:"Sale", grad:"linear-gradient(135deg,#22d3ee,#34d399)" },
-      { id:4, name:"Vision 4K Action Camera", cat:"Camera", emoji:"📷", price:399, old:null, rating:4.9, reviews:531, tag:null, grad:"linear-gradient(135deg,#f5b544,#ff5c8a)" },
-      { id:5, name:"Halo Smart Home Hub", cat:"Home", emoji:"🏠", price:179, old:219, rating:4.6, reviews:398, tag:"Sale", grad:"linear-gradient(135deg,#34d399,#22d3ee)" },
-      { id:6, name:"Ember Wireless Earbuds", cat:"Audio", emoji:"🎵", price:149, old:null, rating:4.8, reviews:2103, tag:"Bestseller", grad:"linear-gradient(135deg,#7c5cff,#ff5c8a)" },
-      { id:7, name:"Quantum Mechanical Keyboard", cat:"Accessories", emoji:"⌨️", price:189, old:229, rating:4.9, reviews:754, tag:"Sale", grad:"linear-gradient(135deg,#6366f1,#22d3ee)" },
-      { id:8, name:"Flux Fast Wireless Charger", cat:"Accessories", emoji:"🔋", price:59, old:79, rating:4.5, reviews:1590, tag:null, grad:"linear-gradient(135deg,#f97316,#f5b544)" },
-      { id:9, name:"Orbit VR Headset", cat:"Wearables", emoji:"🥽", price:449, old:null, rating:4.7, reviews:287, tag:"New", grad:"linear-gradient(135deg,#22d3ee,#7c5cff)" },
-      { id:10, name:"Lumen Smart Desk Lamp", cat:"Home", emoji:"💡", price:89, old:109, rating:4.6, reviews:456, tag:null, grad:"linear-gradient(135deg,#f5b544,#34d399)" },
-      { id:11, name:"Cinema Portable Projector", cat:"Home", emoji:"📽️", price:279, old:349, rating:4.7, reviews:341, tag:"Sale", grad:"linear-gradient(135deg,#ff5c8a,#6366f1)" },
-      { id:12, name:"Terra Rugged Power Bank", cat:"Accessories", emoji:"⚡", price:69, old:null, rating:4.8, reviews:1876, tag:"Bestseller", grad:"linear-gradient(135deg,#34d399,#7c5cff)" },
+      // Phone Accessories
+      { id:1,  name:"Braided USB-C Charging Cable (2m)", cat:"Phone Accessories", sub:"Charging Cables",    emoji:"🔌", price:8.99,  old:12.99, rating:4.7, reviews:1284, tag:"Sale",       grad:"linear-gradient(135deg,#7c5cff,#22d3ee)" },
+      { id:2,  name:"30W Fast Wall Charger",             cat:"Phone Accessories", sub:"Chargers",           emoji:"⚡", price:19.99, old:null,  rating:4.8, reviews:876,  tag:"Bestseller", grad:"linear-gradient(135deg,#f97316,#f5b544)" },
+      { id:3,  name:"Shockproof Clear Phone Case",       cat:"Phone Accessories", sub:"Phone Cases",        emoji:"📱", price:11.99, old:null,  rating:4.6, reviews:2103, tag:null,         grad:"linear-gradient(135deg,#22d3ee,#34d399)" },
+      { id:4,  name:"Tempered Glass Protector (2-pack)", cat:"Phone Accessories", sub:"Screen Protectors",  emoji:"🛡️", price:7.99, old:11.99, rating:4.5, reviews:1590, tag:"Sale",       grad:"linear-gradient(135deg,#6366f1,#22d3ee)" },
+      { id:5,  name:"20 000mAh Power Bank",              cat:"Phone Accessories", sub:"Power Banks",        emoji:"🔋", price:29.99, old:39.99, rating:4.8, reviews:754,  tag:"Sale",       grad:"linear-gradient(135deg,#34d399,#7c5cff)" },
+      { id:6,  name:"Wireless Bluetooth Earphones",      cat:"Phone Accessories", sub:"Earphones",          emoji:"🎧", price:24.99, old:null,  rating:4.7, reviews:1876, tag:"Bestseller", grad:"linear-gradient(135deg,#7c5cff,#ff5c8a)" },
+      { id:7,  name:"Car Vent Phone Mount",              cat:"Phone Accessories", sub:"Car Accessories",    emoji:"🚗", price:14.99, old:null,  rating:4.6, reviews:398,  tag:null,         grad:"linear-gradient(135deg,#f5b544,#ff5c8a)" },
+      { id:8,  name:"USB-C to HDMI Adapter",             cat:"Phone Accessories", sub:"Adapters",           emoji:"🔀", price:17.99, old:22.99, rating:4.5, reviews:531,  tag:null,         grad:"linear-gradient(135deg,#22d3ee,#7c5cff)" },
+      // Forever Living Products
+      { id:9,  name:"Forever Aloe Vera Gel Drink (1L)",  cat:"Forever Living", sub:"Aloe Drinks",   emoji:"🥤", price:22.99, old:null,  rating:4.9, reviews:642, tag:"Bestseller", grad:"linear-gradient(135deg,#34d399,#22d3ee)" },
+      { id:10, name:"Aloe Hydrating Face Cream",         cat:"Forever Living", sub:"Skincare",      emoji:"🧴", price:18.99, old:24.99, rating:4.7, reviews:456, tag:"Sale",       grad:"linear-gradient(135deg,#ff5c8a,#7c5cff)" },
+      { id:11, name:"Aloe Moisturizing Body Wash",       cat:"Forever Living", sub:"Personal Care", emoji:"🧼", price:12.99, old:null,  rating:4.6, reviews:287, tag:null,         grad:"linear-gradient(135deg,#22d3ee,#34d399)" },
+      { id:12, name:"Forever Daily Multivitamins",       cat:"Forever Living", sub:"Supplements",   emoji:"💊", price:26.99, old:null,  rating:4.8, reviews:341, tag:"New",        grad:"linear-gradient(135deg,#7c5cff,#22d3ee)" },
+      // Clothing
+      { id:13, name:"Cotton Crew-Neck T-Shirt",          cat:"Clothing", sub:"T-Shirts",   emoji:"👕", price:14.99, old:19.99, rating:4.6, reviews:1120, tag:"Sale", grad:"linear-gradient(135deg,#6366f1,#22d3ee)" },
+      { id:14, name:"Classic Piqué Polo Shirt",          cat:"Clothing", sub:"Polo Shirts", emoji:"👔", price:22.99, old:null,  rating:4.7, reviews:634,  tag:null,   grad:"linear-gradient(135deg,#f5b544,#34d399)" },
+      { id:15, name:"Casual Chino Shorts",               cat:"Clothing", sub:"Shorts",      emoji:"🩳", price:18.99, old:null,  rating:4.5, reviews:412,  tag:null,   grad:"linear-gradient(135deg,#ff5c8a,#6366f1)" },
+      { id:16, name:"Lightweight Bomber Jacket",         cat:"Clothing", sub:"Jackets",     emoji:"🧥", price:44.99, old:59.99, rating:4.8, reviews:287,  tag:"Sale", grad:"linear-gradient(135deg,#7c5cff,#ff5c8a)" },
+      // Body Care
+      { id:17, name:"Shea Butter Body Cream",            cat:"Body Care", sub:"Body Care", emoji:"🧴", price:13.99, old:null,  rating:4.7, reviews:754,  tag:null,         grad:"linear-gradient(135deg,#f5b544,#ff5c8a)" },
+      { id:18, name:"Natural Soap Bar Set (4×)",         cat:"Body Care", sub:"Body Care", emoji:"🧼", price:9.99,  old:13.99, rating:4.6, reviews:1590, tag:"Bestseller", grad:"linear-gradient(135deg,#34d399,#22d3ee)" },
+      // Article de bazar
+      { id:19, name:"Kitchen Utensil Set (6 pcs)",       cat:"Article de bazar", sub:"Bazar", emoji:"🍴", price:16.99, old:null,  rating:4.5, reviews:398, tag:null,   grad:"linear-gradient(135deg,#22d3ee,#7c5cff)" },
+      { id:20, name:"Stainless Steel Water Bottle",      cat:"Article de bazar", sub:"Bazar", emoji:"🍶", price:12.99, old:null,  rating:4.6, reviews:531, tag:null,   grad:"linear-gradient(135deg,#6366f1,#22d3ee)" },
+      { id:21, name:"Home Storage Basket Set (3×)",      cat:"Article de bazar", sub:"Bazar", emoji:"🧺", price:19.99, old:26.99, rating:4.7, reviews:287, tag:"Sale", grad:"linear-gradient(135deg,#f97316,#f5b544)" },
     ];
-    const CATEGORIES = ["All","Audio","Wearables","Home","Camera","Accessories"];
-    const money = n => "$" + n.toLocaleString("en-US",{minimumFractionDigits:2,maximumFractionDigits:2});
+    const CATEGORIES = ["All","Phone Accessories","Forever Living","Clothing","Body Care","Article de bazar"];
+    const money = n => new Intl.NumberFormat("fr-FR",{style:"currency",currency:"EUR"}).format(n);
 
     /* ---------------- Icons ---------------- */
     const Cart = ({s=20}) => (
@@ -404,7 +418,7 @@
             <button className="fav" onClick={()=>onFav(p.id)} title="Save">{fav?"❤️":"🤍"}</button>
           </div>
           <div className="body">
-            <span className="cat">{p.cat}</span>
+            <span className="cat">{p.sub || p.cat}</span>
             <h3>{p.name}</h3>
             <div className="rate"><span className="stars">{"★".repeat(Math.round(p.rating))}</span>{p.rating} · {p.reviews.toLocaleString()} reviews</div>
             <div className="foot">
@@ -456,7 +470,7 @@
               <div className="drawer-foot">
                 <div className="row"><span>Subtotal</span><span>{money(subtotal)}</span></div>
                 <div className="row"><span>Shipping</span><span>{shipping===0?"Free":money(shipping)}</span></div>
-                <div className="row"><span>Tax (est.)</span><span>{money(tax)}</span></div>
+                <div className="row"><span>VAT (20%)</span><span>{money(tax)}</span></div>
                 <div className="row total"><span>Total</span><span>{money(total)}</span></div>
                 <button className="btn btn-primary btn-block" onClick={onCheckout}>
                   <Lock/> Checkout · {money(total)}
@@ -602,7 +616,7 @@
                     <>
                       <div className="card-visual">
                         <div className="cv-top">
-                          <span className="brand">ATIKUR PAY</span>
+                          <span className="brand">CLICKFR PAY</span>
                           <span className="netw">{brand}</span>
                         </div>
                         <div className="chip-ic"></div>
@@ -654,7 +668,7 @@
                   <div style={{borderTop:"1px solid var(--line)",margin:"14px 0",paddingTop:14}}>
                     <div className="ci"><span>Subtotal</span><b>{money(subtotal)}</b></div>
                     <div className="ci"><span>Shipping</span><b>{shipping===0?"Free":money(shipping)}</b></div>
-                    <div className="ci"><span>Tax</span><b>{money(tax)}</b></div>
+                    <div className="ci"><span>VAT (20%)</span><b>{money(tax)}</b></div>
                   </div>
                   <div className="ci" style={{fontSize:20,fontWeight:800,borderTop:"1px solid var(--line)",paddingTop:14}}>
                     <span style={{color:"var(--txt)"}}>Total</span><b>{money(total)}</b>
@@ -706,8 +720,8 @@
 
       const count = cart.reduce((a,b)=>a+b.qty,0);
       const subtotal = cart.reduce((a,b)=>a+b.price*b.qty,0);
-      const shipping = subtotal>200 || subtotal===0 ? 0 : 12.99;
-      const tax = +(subtotal*0.08).toFixed(2);
+      const shipping = subtotal>50 || subtotal===0 ? 0 : 4.99;
+      const tax = +(subtotal*0.20).toFixed(2);
       const total = +(subtotal+shipping+tax).toFixed(2);
 
       const openCheckout = () => { setDrawer(false); setCheckout(true); };
@@ -718,7 +732,7 @@
           {/* Nav */}
           <header className="nav">
             <div className="wrap nav-inner">
-              <div className="logo"><span className="mark">A</span> ATIKUR</div>
+              <div className="logo"><span className="mark">C</span> ClickFR</div>
               <nav className="nav-links">
                 <a href="#shop">Shop</a>
                 <a href="#featured">Featured</a>
@@ -726,7 +740,7 @@
                 <a href="#about">About</a>
               </nav>
               <div className="nav-right">
-                <span className="pill" style={{color:"var(--muted)"}}>🚚 Free shipping over $200</span>
+                <span className="pill" style={{color:"var(--muted)"}}>🚚 Free shipping over €50</span>
                 <button className="cart-btn" onClick={()=>setDrawer(true)} title="Cart">
                   <Cart/>
                   {count>0 && <span className="cart-count">{count}</span>}
@@ -739,9 +753,9 @@
           <section className="hero">
             <div className="wrap hero-grid">
               <div>
-                <span className="pill"><span style={{color:"var(--brand-2)"}}>✦</span> New Summer 2026 collection</span>
-                <h1>Premium tech,<br/><span className="g">effortlessly yours.</span></h1>
-                <p>Discover audio, wearables and smart-home gear engineered to feel like the future. Free 2-day shipping, 30-day returns, and a demo checkout you can try right now.</p>
+                <span className="pill"><span style={{color:"var(--brand-2)"}}>✦</span> New arrivals every week</span>
+                <h1>Everything you need,<br/><span className="g">one click away.</span></h1>
+                <p>Phone accessories, Forever Living wellness, clothing and home essentials — curated and delivered fast. Free shipping over €50, easy returns, and a demo checkout you can try right now.</p>
                 <div className="hero-cta">
                   <a href="#shop" className="btn btn-primary">Shop the collection →</a>
                   <a href="#deals" className="btn btn-ghost">View today's deals</a>
@@ -753,7 +767,7 @@
                 </div>
               </div>
               <div className="hero-visual">
-                <span className="float">🎧</span>
+                <span className="float">🛍️</span>
                 <div className="badge b1"><span className="dot"></span> In stock · ships today</div>
                 <div className="badge b2">⭐ 4.9 · 12,480 reviews</div>
               </div>
@@ -763,7 +777,7 @@
           {/* Features */}
           <section className="wrap sec" id="about">
             <div className="feat">
-              <div className="f"><span className="ic">🚚</span><div><b>Free fast shipping</b><span>On all orders over $200</span></div></div>
+              <div className="f"><span className="ic">🚚</span><div><b>Free fast shipping</b><span>On all orders over €50</span></div></div>
               <div className="f"><span className="ic">↩️</span><div><b>30-day returns</b><span>No questions asked</span></div></div>
               <div className="f"><span className="ic">🔒</span><div><b>Secure checkout</b><span>Encrypted demo payments</span></div></div>
               <div className="f"><span className="ic">🎁</span><div><b>2-year warranty</b><span>On every product</span></div></div>
@@ -808,10 +822,10 @@
             }}>
               <div>
                 <span className="eyebrow">Limited time</span>
-                <h2 style={{fontSize:28,margin:"8px 0 6px",fontWeight:800}}>Up to 30% off audio gear 🎧</h2>
-                <p style={{color:"var(--muted)",margin:0,maxWidth:440}}>Save on our best-selling headphones, earbuds and speakers. Deals end soon — add to cart and check out with the demo payment.</p>
+                <h2 style={{fontSize:28,margin:"8px 0 6px",fontWeight:800}}>Up to 30% off phone accessories 📱</h2>
+                <p style={{color:"var(--muted)",margin:0,maxWidth:440}}>Save on cables, chargers, power banks and cases. Deals end soon — add to cart and check out with the demo payment.</p>
               </div>
-              <button className="btn btn-primary" onClick={()=>{setCat("Audio");document.getElementById("shop").scrollIntoView({behavior:"smooth"});}}>Shop audio deals →</button>
+              <button className="btn btn-primary" onClick={()=>{setCat("Phone Accessories");document.getElementById("shop").scrollIntoView({behavior:"smooth"});}}>Shop accessory deals →</button>
             </div>
           </section>
 
@@ -820,18 +834,18 @@
             <div className="wrap">
               <div className="foot-grid">
                 <div>
-                  <div className="logo" style={{marginBottom:12}}><span className="mark">A</span> ATIKUR</div>
-                  <p style={{fontSize:13.5,maxWidth:300,margin:0}}>Premium tech &amp; lifestyle products, designed to feel like the future. This is a demo store built for showcase purposes.</p>
+                  <div className="logo" style={{marginBottom:12}}><span className="mark">C</span> ClickFR</div>
+                  <p style={{fontSize:13.5,maxWidth:300,margin:0}}>Phone accessories, wellness, clothing &amp; home essentials — all in one place. This is a demo store built for showcase purposes.</p>
                   <div style={{display:"flex",gap:10,marginTop:16,fontSize:20}}>
                     <span>📸</span><span>🐦</span><span>▶️</span><span>💼</span>
                   </div>
                 </div>
-                <div><h4>Shop</h4><ul><li><a href="#shop">All products</a></li><li><a href="#deals">Deals</a></li><li><a href="#shop">Audio</a></li><li><a href="#shop">Wearables</a></li></ul></div>
+                <div><h4>Shop</h4><ul><li><a href="#shop">All products</a></li><li><a href="#deals">Deals</a></li><li><a href="#shop">Phone Accessories</a></li><li><a href="#shop">Clothing</a></li></ul></div>
                 <div><h4>Support</h4><ul><li><a href="#">Contact us</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty</a></li></ul></div>
                 <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Privacy</a></li></ul></div>
               </div>
               <div className="foot-bottom">
-                <span>© 2026 ATIKUR. All rights reserved · Demo store.</span>
+                <span>© 2026 ClickFR. All rights reserved · Demo store.</span>
                 <span style={{display:"flex",gap:10,alignItems:"center"}}>We accept: 💳 VISA · Mastercard · 🅿️ PayPal ·  Pay</span>
               </div>
             </div>
