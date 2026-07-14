@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Unrelated pre-existing mockups (not part of the ATIKUR website)
+fashion_ecommerce_store.html
+supabase_dashboard_mockup.html
