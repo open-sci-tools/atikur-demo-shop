@@ -1,7 +1,10 @@
 # ATIKUR — Demo E-commerce Store
 
-A modern, sleek demo e-commerce website built with **React 18 + JSX**, packaged as a single
-self-contained `index.html`. No build step, no `npm install` — just open it.
+**🔗 Live demo: https://open-sci-tools.github.io/atikur-demo-shop/**
+
+A modern, sleek demo e-commerce website built with **React 18 + JSX**. This repo contains
+both a full **Vite + React** app (`atikur-app/`) and a single self-contained `index.html`
+you can open with no build step.
 
 ## How to open
 - **Double-click `index.html`** (opens in your default browser), or
