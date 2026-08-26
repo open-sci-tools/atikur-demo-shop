@@ -20,6 +20,15 @@ you can open with no build step.
   Every card links back to its eBay listing.
 - **Category filters**, **subcategory** dropdown, **search**, **sort** (price / name)
   and **load more** paging (48 per page).
+- **Three languages** — English, Français, বাংলা — covering the whole interface *and*
+  the eBay category / subcategory names (product titles stay as the seller wrote them).
+- **Four currencies** — € EUR, £ GBP, $ USD, ৳ BDT. Prices are stored in EUR and converted
+  live from `open.er-api.com`, falling back to rates measured 2026-08-26 and cross-checked
+  against the ECB (`api.frankfurter.dev`). Language and currency persist in `localStorage`.
+- **Checkout takes the delivery address first**: full name, email, phone, street, second
+  address line, city, postcode, region and country are validated *before* the payment step,
+  and the confirmed address is shown on the payment screen and on the order receipt.
+  Payment methods kept: **Card, PayPal (with PayPal account email), Apple Pay**.
 - **Add to cart**, favorites (❤️), toast notifications.
 - Slide-out **cart drawer** with quantity controls and live totals (subtotal, shipping, tax).
   - Free shipping over $200, otherwise $12.99. Tax estimated at 8%.

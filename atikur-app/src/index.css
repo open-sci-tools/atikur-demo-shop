@@ -341,3 +341,23 @@ label.fl{display:block;font-size:12.5px;font-weight:600;color:var(--muted);margi
   .foot-grid{grid-template-columns:1fr}
   .fg3{grid-template-columns:1fr 1fr}
 }
+
+/* Language / currency pickers, checkout steps, payment panels */
+.picker{background:var(--panel);border:1px solid var(--line);color:var(--txt);border-radius:999px;
+  padding:7px 10px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit}
+.picker:hover{border-color:var(--line-2)}
+.rates{font-size:12px;color:var(--muted-2)}
+.step-labels{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--muted-2);margin:-6px 0 16px}
+.step-labels .on{color:var(--brand-2);font-weight:700}
+.ship-recap{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;
+  background:var(--panel);border:1px solid var(--line-2);border-radius:14px;padding:14px 16px;margin-top:6px}
+.ship-recap .lbl{display:block;font-size:11px;letter-spacing:.6px;color:var(--muted-2);margin-bottom:4px}
+.ship-recap b{display:block;font-size:14px}
+.ship-recap .addr{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+.btn-sm{padding:6px 12px;font-size:12.5px}
+.pay-panel{padding:20px;text-align:center;background:var(--panel);border:1px solid var(--line-2);
+  border-radius:14px;margin-top:6px}
+.pay-panel .pp-logo{font-size:22px;margin-bottom:10px}
+.pay-panel .inp{text-align:left}
+:lang(bn) body,html[lang=bn]{font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+@media (max-width:900px){.hide-sm{display:none}}
