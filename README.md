@@ -14,7 +14,12 @@ you can open with no build step.
 
 ## What's inside
 - Sticky glass navbar, animated gradient hero, stats.
-- 12-product catalog with **category filters** + **sort** (price / rating).
+- **633-product catalogue imported from the RockFR Bazar eBay store**
+  (https://www.ebay.fr/str/rockfr) — real titles, real EUR prices, real photos,
+  grouped into the store's own 17 categories and 65 subcategories.
+  Every card links back to its eBay listing.
+- **Category filters**, **subcategory** dropdown, **search**, **sort** (price / name)
+  and **load more** paging (48 per page).
 - **Add to cart**, favorites (❤️), toast notifications.
 - Slide-out **cart drawer** with quantity controls and live totals (subtotal, shipping, tax).
   - Free shipping over $200, otherwise $12.99. Tax estimated at 8%.
@@ -35,3 +40,20 @@ This is a **fake / demo** payment flow for showcase purposes only:
 This machine has no Node.js installed, so a runnable Vite build couldn't be created here.
 If you install Node (from https://nodejs.org), I can scaffold the full `Vite + React`
 project (components, `package.json`, `npm run dev`) on request.
+
+## Catalogue import (eBay → ClickFR)
+
+The catalogue in `atikur-app/src/data/products.js` is generated, not hand-written.
+Regenerate it from the live eBay store with:
+
+```bash
+cd tools
+python3 scrape_ebay.py        # -> ebay_products.json   (titles, EUR prices, photos, item URLs)
+python3 scrape_categories.py  # -> cat_map.json         (item id -> category / subcategory)
+python3 gen_products.py       # -> products.js
+cp products.js ../atikur-app/src/data/products.js
+```
+
+`scrape_categories.py` needs `cat_tree.json`, the store's category tree, which
+`scrape_ebay.py`'s page-1 HTML provides. Product photos are hot-linked from
+`i.ebayimg.com`, so no images are stored in the repo.

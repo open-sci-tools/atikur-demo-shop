@@ -177,7 +177,7 @@ export default function Checkout({ open, onClose, items, subtotal, shipping, tax
               <div className="co-summary">
                 {items.map((it) => (
                   <div className="ci" key={it.id}>
-                    <span style={{ display: "flex", gap: 8, alignItems: "center" }}><span style={{ fontSize: 18 }}>{it.emoji}</span>{it.name} × {it.qty}</span>
+                    <span style={{ display: "flex", gap: 8, alignItems: "center" }}>{it.img ? <img src={it.img} alt="" style={{ width: 26, height: 26, objectFit: "contain", borderRadius: 6, background: "#fff", flexShrink: 0 }} /> : <span style={{ fontSize: 18 }}>🛍️</span>}<span style={{ overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", maxWidth: 190 }}>{it.name}</span> × {it.qty}</span>
                     <b>{money(it.price * it.qty)}</b>
                   </div>
                 ))}

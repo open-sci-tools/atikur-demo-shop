@@ -1,5 +1,5 @@
 import { useState, useMemo } from "react";
-import { PRODUCTS, CATEGORIES, money } from "./data/products";
+import { PRODUCTS, CATEGORIES, SUBCATEGORIES, money } from "./data/products";
 import { Cart } from "./components/Icons";
 import ProductCard from "./components/ProductCard";
 import CartDrawer from "./components/CartDrawer";
@@ -8,20 +8,37 @@ import { useToasts } from "./hooks/useToasts";
 
 export default function App() {
   const [cat, setCat] = useState("All");
+  const [sub, setSub] = useState("All");
+  const [q, setQ] = useState("");
   const [sort, setSort] = useState("featured");
+  const [page, setPage] = useState(1);
   const [cart, setCart] = useState([]);
   const [favs, setFavs] = useState([]);
   const [drawer, setDrawer] = useState(false);
   const [checkout, setCheckout] = useState(false);
   const { toasts, push } = useToasts();
 
+  const PER_PAGE = 48;
+
   const shown = useMemo(() => {
-    let list = PRODUCTS.filter((p) => cat === "All" || p.cat === cat);
+    const needle = q.trim().toLowerCase();
+    let list = PRODUCTS.filter(
+      (p) =>
+        (cat === "All" || p.cat === cat) &&
+        (sub === "All" || p.sub === sub) &&
+        (!needle || p.name.toLowerCase().includes(needle))
+    );
     if (sort === "low") list = [...list].sort((a, b) => a.price - b.price);
     else if (sort === "high") list = [...list].sort((a, b) => b.price - a.price);
-    else if (sort === "rating") list = [...list].sort((a, b) => b.rating - a.rating);
+    else if (sort === "name") list = [...list].sort((a, b) => a.name.localeCompare(b.name, "fr"));
     return list;
-  }, [cat, sort]);
+  }, [cat, sub, q, sort]);
+
+  const visible = shown.slice(0, page * PER_PAGE);
+
+  const pickCat = (c) => { setCat(c); setSub("All"); setPage(1); };
+  const pickSub = (s) => { setSub(s); setPage(1); };
+  const search = (v) => { setQ(v); setPage(1); };
 
   const add = (p) => {
     setCart((c) => {
@@ -70,14 +87,14 @@ export default function App() {
           <div>
             <span className="pill"><span style={{ color: "var(--brand-2)" }}>✦</span> New arrivals every week</span>
             <h1>Everything you need,<br /><span className="g">one click away.</span></h1>
-            <p>Phone accessories, Forever Living wellness, clothing and home essentials — curated and delivered fast. Free shipping over €50, easy returns, and a demo checkout you can try right now.</p>
+            <p>Home, beauty &amp; wellness, phone accessories, DIY, garden and more — the full RockFR Bazar catalogue, delivered fast. Free shipping over €50, easy returns, and a demo checkout you can try right now.</p>
             <div className="hero-cta">
               <a href="#shop" className="btn btn-primary">Shop the collection →</a>
               <a href="#deals" className="btn btn-ghost">View today's deals</a>
             </div>
             <div className="hero-stats">
-              <div className="s"><b>50k+</b><span>Happy customers</span></div>
-              <div className="s"><b>4.9★</b><span>Average rating</span></div>
+              <div className="s"><b>{PRODUCTS.length.toLocaleString("fr-FR")}</b><span>Products in stock</span></div>
+              <div className="s"><b>{CATEGORIES.length - 1}</b><span>Categories</span></div>
               <div className="s"><b>24/7</b><span>Support</span></div>
             </div>
           </div>
@@ -103,37 +120,66 @@ export default function App() {
           <div>
             <span className="eyebrow">Our collection</span>
             <h2>Shop everything</h2>
-            <p>{shown.length} products · curated for the way you live</p>
+            <p>{shown.length.toLocaleString("fr-FR")} of {PRODUCTS.length.toLocaleString("fr-FR")} products · imported live from our eBay store</p>
           </div>
           <div style={{ display: "flex", flexDirection: "column", gap: 12, alignItems: "flex-end" }}>
-            <div className="filters">
-              {CATEGORIES.map((c) => (
-                <button key={c} className={"chip" + (cat === c ? " active" : "")} onClick={() => setCat(c)}>{c}</button>
-              ))}
+            <div style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
+            <div className="search-wrap">
+              <span className="si">🔍</span>
+              <input className="inp search" placeholder="Search products…" value={q} onChange={(e) => search(e.target.value)} />
             </div>
+            {cat !== "All" && SUBCATEGORIES[cat] && SUBCATEGORIES[cat].length > 1 && (
+              <select className="inp" style={{ width: "auto", padding: "9px 12px", cursor: "pointer" }} value={sub} onChange={(e) => pickSub(e.target.value)}>
+                <option value="All">All {cat}</option>
+                {SUBCATEGORIES[cat].map((sc) => <option key={sc} value={sc}>{sc}</option>)}
+              </select>
+            )}
             <select className="inp" style={{ width: "auto", padding: "9px 12px", cursor: "pointer" }} value={sort} onChange={(e) => setSort(e.target.value)}>
               <option value="featured">Sort: Featured</option>
               <option value="low">Price: Low to High</option>
               <option value="high">Price: High to Low</option>
-              <option value="rating">Top rated</option>
+              <option value="name">Name: A → Z</option>
             </select>
+            </div>
           </div>
         </div>
+        <div className="filters chip-row">
+          {CATEGORIES.map((c) => (
+            <button key={c} className={"chip" + (cat === c ? " active" : "")} onClick={() => pickCat(c)}>{c}</button>
+          ))}
+        </div>
+        <div className="filters cat-row">
+          {CATEGORIES.map((c) => (
+            <button key={c} className={"chip" + (cat === c ? " active" : "")} onClick={() => pickCat(c)}>{c}</button>
+          ))}
+        </div>
         <div className="grid" id="featured">
-          {shown.map((p) => (
+          {visible.map((p) => (
             <ProductCard key={p.id} p={p} onAdd={add} fav={favs.includes(p.id)} onFav={toggleFav} />
           ))}
         </div>
+        {visible.length < shown.length && (
+          <div className="more-wrap">
+            <button className="btn btn-ghost" onClick={() => setPage((n) => n + 1)}>
+              Load more · {(shown.length - visible.length).toLocaleString("fr-FR")} left
+            </button>
+          </div>
+        )}
+        {shown.length === 0 && (
+          <p style={{ color: "var(--muted)", textAlign: "center", padding: "40px 0" }}>
+            No product matches “{q}”. Try another search.
+          </p>
+        )}
       </section>
 
       <section className="wrap sec" id="deals">
         <div className="deals-banner">
           <div>
             <span className="eyebrow">Limited time</span>
-            <h2 style={{ fontSize: 28, margin: "8px 0 6px", fontWeight: 800 }}>Up to 30% off phone accessories 📱</h2>
-            <p style={{ color: "var(--muted)", margin: 0, maxWidth: 440 }}>Save on cables, chargers, power banks and cases. Deals end soon — add to cart and check out with the demo payment.</p>
+            <h2 style={{ fontSize: 28, margin: "8px 0 6px", fontWeight: 800 }}>Small prices, big basket 🛒</h2>
+            <p style={{ color: "var(--muted)", margin: 0, maxWidth: 440 }}>Hundreds of everyday items under €10 — household, beauty, phone and DIY. Add to cart and check out with the demo payment.</p>
           </div>
-          <button className="btn btn-primary" onClick={() => { setCat("Phone Accessories"); document.getElementById("shop").scrollIntoView({ behavior: "smooth" }); }}>Shop accessory deals →</button>
+          <button className="btn btn-primary" onClick={() => { pickCat("All"); setSort("low"); document.getElementById("shop").scrollIntoView({ behavior: "smooth" }); }}>Shop the cheapest first →</button>
         </div>
       </section>
 
@@ -142,12 +188,12 @@ export default function App() {
           <div className="foot-grid">
             <div>
               <div className="logo" style={{ marginBottom: 12 }}><span className="mark">C</span> ClickFR</div>
-              <p style={{ fontSize: 13.5, maxWidth: 300, margin: 0 }}>Phone accessories, wellness, clothing &amp; home essentials — all in one place. This is a demo store built for showcase purposes.</p>
+              <p style={{ fontSize: 13.5, maxWidth: 300, margin: 0 }}>The full RockFR Bazar catalogue — home, beauty, phone, DIY and garden. This is a demo storefront; every listing links back to eBay.</p>
               <div style={{ display: "flex", gap: 10, marginTop: 16, fontSize: 20 }}>
                 <span>📸</span><span>🐦</span><span>▶️</span><span>💼</span>
               </div>
             </div>
-            <div><h4>Shop</h4><ul><li><a href="#shop">All products</a></li><li><a href="#deals">Deals</a></li><li><a href="#shop">Phone Accessories</a></li><li><a href="#shop">Clothing</a></li></ul></div>
+            <div><h4>Shop</h4><ul><li><a href="#shop">All products</a></li><li><a href="#deals">Deals</a></li><li><a href="https://www.ebay.fr/str/rockfr" target="_blank" rel="noreferrer">Our eBay store</a></li><li><a href="#shop">Categories</a></li></ul></div>
             <div><h4>Support</h4><ul><li><a href="#">Contact us</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Warranty</a></li></ul></div>
             <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Careers</a></li><li><a href="#">Press</a></li><li><a href="#">Privacy</a></li></ul></div>
           </div>

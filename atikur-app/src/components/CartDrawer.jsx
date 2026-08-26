@@ -19,7 +19,7 @@ export default function CartDrawer({ open, onClose, items, setQty, remove, subto
             </div>
           ) : items.map((it) => (
             <div className="line" key={it.id}>
-              <div className="lt" style={{ background: it.grad }}>{it.emoji}</div>
+              <div className="lt" style={{ background: "#fff" }}>{it.img ? <img src={it.img} alt="" /> : "🛍️"}</div>
               <div className="li">
                 <h4>{it.name}</h4>
                 <div className="lc">{it.cat}</div>
