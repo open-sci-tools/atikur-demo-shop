@@ -148,11 +148,6 @@ export default function App() {
             <button key={c} className={"chip" + (cat === c ? " active" : "")} onClick={() => pickCat(c)}>{c}</button>
           ))}
         </div>
-        <div className="filters cat-row">
-          {CATEGORIES.map((c) => (
-            <button key={c} className={"chip" + (cat === c ? " active" : "")} onClick={() => pickCat(c)}>{c}</button>
-          ))}
-        </div>
         <div className="grid" id="featured">
           {visible.map((p) => (
             <ProductCard key={p.id} p={p} onAdd={add} fav={favs.includes(p.id)} onFav={toggleFav} />
